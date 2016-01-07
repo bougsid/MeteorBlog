@@ -1,0 +1,24 @@
+<template name="contact">
+
+    <div class="row form">
+        <h2 style="color: #1976D2" class="center-align">Contact</h2>
+
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input required="" aria-required="true" id="email" type="email" class="validate" >
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea required="" aria-required="true" id="message" class="materialize-textarea" length="120">{{content}}</textarea>
+                    <label for="message">Message</label>
+                </div>
+            </div>
+                <a id="send-email-btn" class="btn waves-effect waves-light right page-footer blue darken-2" type="submit" name="action">Send
+                    <i class="material-icons right">send</i>
+                </a>
+        </form>
+    </div>
+</template>

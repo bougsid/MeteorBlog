@@ -1,0 +1,68 @@
+<template name="layout">
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <div class="login-dialog">
+        <a style="cursor: pointer;" id="close-dialog"> <i class="material-icons right">close</i></a>
+        {{> atForm}}
+    </div>
+    <nav>
+        <div class="blue darken-1 nav-wrapper">
+            <!--<a href="#" class="brand-logo right">Logo</a>-->
+
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <a id="login-btn" class="white-text waves-effect  btn-flat">{{#if isConnected}}Logout{{else}}
+                    Login{{/if}}</a>
+                {{#if isConnected}}
+                    <a href="/editProfile" class="white-text waves-effect  btn-flat">Edit Profile</a>
+                    <a id="add-post-btn" href="/posts/add" class="white-text waves-effect  btn-flat">Add Post</a>
+                    {{#if isAdmin}}
+                        <a id="messages" href="/messages" class="white-text waves-effect  btn-flat">Messages</a>
+                    {{/if}}
+                {{/if}}
+                <li><a href="/">Blog</a></li>
+                <li><a href="/posts">Posts</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+
+        <main class="mdl-layout__content">
+            {{> yield }}
+        </main>
+    </div>
+    <footer class="page-footer blue darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Meteor Blog</h5>
+
+                    <p class="grey-text text-lighten-4">Developed By: Ayoub BOUGSID</p>
+
+                    <p class="grey-text text-lighten-4">Framed By: M. A. DAAIF</p>
+
+                    <p class="grey-text text-lighten-4">This blog is for studying purpose only, GLSID2 ENSETM</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Contact</h5>
+                    <ul>
+                        <li><a target="blank" class="grey-text text-lighten-3"
+                               href="https://github.com/bougsid/">GitHub</a></li>
+                        <li><a target="blank" class="grey-text text-lighten-3" href="https://facebook.com/bougsiid">Facebook</a>
+                        </li>
+                        <li><a target="blank" class="grey-text text-lighten-3">ayoub.bougsid@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 Copyright BOUGSID
+            </div>
+        </div>
+    </footer>
+
+</template>

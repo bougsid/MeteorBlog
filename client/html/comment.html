@@ -1,0 +1,19 @@
+<template name="comment">
+    {{# if isOwner author}}
+    <a class="remove-comment-btn right" style="cursor: pointer"><i id="{{_id}}" class="material-icons">close</i></a>
+    {{/if}}
+    <div class="comment mdl-color-text--grey-700">
+        <header class="comment__header">
+            <img src="{{getOwnerPicture author}}" class="comment__avatar">
+
+            <div class="comment__author">
+                <strong>{{getOwnerUsername author}}</strong>
+                <span>{{formattime createdAt}}</span>
+            </div>
+        </header>
+        <div class="comment__text">
+           {{content}}
+        </div>
+    </div>
+    <hr/>
+</template>

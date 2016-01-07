@@ -1,0 +1,43 @@
+<template name="entry">
+    <main class="mdl-layout__content">
+        <div class="demo-back">
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="/" title="go back"
+               role="button" data-upgraded=",MaterialButton,MaterialRipple">
+                <i class="material-icons" role="presentation">arrow_back</i>
+                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></a>
+        </div>
+        <div class="demo-blog__posts mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+                <div style="background-image: url({{getUrl image}}); " class="mdl-card__media mdl-color-text--grey-50">
+                     <h3 style="color: #1976D2;">{{title}}</h3>
+                </div>
+                <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+                    <div class="minilogo"></div>
+                    <div>
+                        <div class="chip left">
+                            <img src="{{getOwnerPicture author}}" title="{{getOwnerUsername author}}"
+                                 alt="{{getOwnerUsername author}}">
+                            {{getOwnerUsername author}}
+                        </div>
+                        <span>{{formattime createdAt}}</span>
+                    </div>
+                    <div class="section-spacer"></div>
+                </div>
+                <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+                    {{content}}
+                </div>
+                <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
+                    <div class="col s12">
+                            <input required="" aria-required="true" placeholder="Comment" id="comment-content" type="text" class="validate">
+                        <a id="{{_id}}" class="btn waves-effect waves-light right add-comment-btn" type="submit" name="action">Add comment
+                            <i class="material-icons right">mode_edit</i>
+                        </a>
+                    </div>
+                    {{> comments}}
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</template>

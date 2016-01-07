@@ -1,0 +1,14 @@
+<template name="message">
+    <li class="collection-item avatar">
+        <img src="{{getOwnerPicture author}}" alt="" class="circle">
+        Email : <b><span class="title">{{email}}</span></b>
+        <p>
+
+        <br/>
+        {{message}}
+        <br/>
+        </p>
+        <a class="secondary-content remove-message" style="cursor: pointer"><i id="{{_id}}"
+                                                                               class="material-icons">close</i></a>
+    </li>
+</template>

@@ -1,0 +1,26 @@
+<template name="editProfile">
+    <div class="row form">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first-name" type="text" class="validate" value="{{profile.firstName}}">
+                    <label for="first-name">First Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="last-name" type="text" class="validate" value="{{profile.lastName}}">
+                    <label for="last-name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                    <a id="add-picture-btn" class="btn waves-effect waves-light right edit-post-btn" type="submit" name="action">Add Picture
+                    <i class="material-icons right">mode_edit</i>
+                </a>
+            </div>
+                <a id="edit-profile-btn" class="btn waves-effect waves-light right edit-post-btn" type="submit" name="action">Edit Profile
+                    <i class="material-icons right">mode_edit</i>
+                </a>
+        </form>
+    </div>
+</template>
