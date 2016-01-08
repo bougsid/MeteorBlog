@@ -81,14 +81,24 @@ Meteor.methods({
     },
     editPost: function (id, title, content, image) {
         if (Meteor.user() != null){
-            Posts.update({_id: id}, {
-                $set: {
-                    'title': title,
-                    'content': content,
-                    'lastUpdate': Date.now(),
-                    'image' : image
-                }
-            })
+            if(image){
+                Posts.update({_id: id}, {
+                    $set: {
+                        'title': title,
+                        'content': content,
+                        'lastUpdate': Date.now(),
+                        'image' : image
+                    }
+                })
+            }else{
+                Posts.update({_id: id}, {
+                    $set: {
+                        'title': title,
+                        'content': content,
+                        'lastUpdate': Date.now(),
+                    }
+                })
+            }
         }
 
     },

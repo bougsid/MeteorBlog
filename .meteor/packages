@@ -18,15 +18,12 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 iron:router
 accounts-password
-accounts-ui
 msavin:mongol
 useraccounts:core
 useraccounts:materialize
 materialize:materialize
 alethes:pages
 mdg:camera
-tomi:upload-jquery
 cfs:standard-packages
 cfs:filesystem
-cfs:gridfs
 momentjs:moment

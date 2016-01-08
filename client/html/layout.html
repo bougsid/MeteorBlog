@@ -7,12 +7,10 @@
         {{> atForm}}
     </div>
     <nav>
-        <div class="blue darken-1 nav-wrapper">
-            <!--<a href="#" class="brand-logo right">Logo</a>-->
-
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <a id="login-btn" class="white-text waves-effect  btn-flat">{{#if isConnected}}Logout{{else}}
-                    Login{{/if}}</a>
+        <div class="nav-wrapper blue darken-2">
+            <a href="/" class="brand-logo">BOUGSID</a>
+            <a href="/" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
                 {{#if isConnected}}
                     <a href="/editProfile" class="white-text waves-effect  btn-flat">Edit Profile</a>
                     <a id="add-post-btn" href="/posts/add" class="white-text waves-effect  btn-flat">Add Post</a>
@@ -20,12 +18,31 @@
                         <a id="messages" href="/messages" class="white-text waves-effect  btn-flat">Messages</a>
                     {{/if}}
                 {{/if}}
+                <a id="login-btn" class="white-text waves-effect  btn-flat pink login-btn">{{#if isConnected}}Logout{{else}}
+                    Login{{/if}}</a>
                 <li><a href="/">Blog</a></li>
                 <li><a href="/posts">Posts</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
+            <ul class="side-nav blue darken-2" id="mobile-demo">
+                <a class="white-text waves-effect  btn-flat" href="/">Blog</a>
+                <a class="white-text waves-effect  btn-flat" href="/posts">Posts</a>
+                <a class="white-text waves-effect  btn-flat" href="/about">About</a>
+                <a class="white-text waves-effect  btn-flat" href="/contact">Contact</a>
+                {{#if isConnected}}
+                    <a href="/editProfile" class="white-text waves-effect  btn-flat">Edit Profile</a>
+                    <a id="add-post-btn" href="/posts/add" class="white-text waves-effect  btn-flat">Add Post</a>
+                    {{#if isAdmin}}
+                        <a id="messages" href="/messages" class="white-text waves-effect  btn-flat">Messages</a>
+                    {{/if}}
+                {{/if}}
+                <a id="login-btn" class="white-text waves-effect  btn-flat pink login-btn">{{#if isConnected}}Logout{{else}}
+                    Login{{/if}}</a>
+
+            </ul>
         </div>
+
     </nav>
 
     <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">

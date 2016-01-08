@@ -110,7 +110,7 @@ body .demo-blog {
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch;
-    min-height: 360px;
+    min-height: 500px;
 }
 
 .demo-blog .mdl-card__title {
@@ -315,7 +315,7 @@ body .demo-blog {
 }
 
 .demo-blog .on-the-road-again .mdl-card__media {
-    background-image: url('images/road.jpg');
+    background-color: #003477;
 }
 
 .demo-blog .shopping .mdl-card__media {
@@ -396,7 +396,7 @@ body .demo-blog {
 }
 
 .demo-blog--blogpost .demo-blog__posts > .mdl-card .mdl-card__media {
-    background-image: url('images/road_big.jpg');
+    background-color: #003477;
     height: 280px;
 }
 

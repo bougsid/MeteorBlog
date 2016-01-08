@@ -2,6 +2,7 @@ Comments = new Mongo.Collection('comments');
 //Meteor.subscribe('comments',{limit:4});
 
 CommentsPages = new Meteor.Pagination(Comments,{
+    perPage: 4,
     itemTemplate: "comment",
     sort: {createdAt: -1}
 });

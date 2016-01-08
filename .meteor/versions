@@ -1,7 +1,5 @@
 accounts-base@1.2.2
 accounts-password@1.1.4
-accounts-ui@1.1.6
-accounts-ui-unstyled@1.1.8
 alethes:pages@1.8.4
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -22,7 +20,6 @@ cfs:collection-filters@0.2.4
 cfs:data-man@0.0.6
 cfs:file@0.1.17
 cfs:filesystem@0.1.2
-cfs:gridfs@0.0.33
 cfs:http-methods@0.0.30
 cfs:http-publish@0.0.13
 cfs:power-queue@0.9.11
@@ -108,7 +105,6 @@ srp@1.0.4
 standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
-tomi:upload-jquery@2.2.1
 tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4

@@ -28,7 +28,8 @@ Template.registerHelper('isOwner', function (_id) {
     }
 );
 Template.layout.rendered = function () {
-    $('#login-btn').click(function () {
+    $(".button-collapse").sideNav();
+    $('.login-btn').click(function () {
         if (Meteor.user()) {
             AccountsTemplates.logout();
             Router.go('/');

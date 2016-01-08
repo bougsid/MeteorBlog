@@ -10,7 +10,6 @@ MessagesPages = new Meteor.Pagination(Messages,{
 
 Template.contact.events({
     'click #send-email-btn' : function(){
-        if(Meteor.user()){
             var email = $('#email').val();
             var message = $('#message').val();
             if(email !='' && message != ''){
@@ -21,7 +20,6 @@ Template.contact.events({
             }else{
                 Materialize.toast('Please fill all the fields', 4000, 'rounded');
             }
-        }
     }
 });
 Template.message.events({

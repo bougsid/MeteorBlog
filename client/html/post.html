@@ -2,16 +2,9 @@
     <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
 
         <div style="background-image: url({{getUrl image}}); " class="mdl-card__media mdl-color-text--grey-50">
-            <h3 style="color: #FFF"><a href="/posts/entry/{{_id}}">{{title}}</a></h3>
+            <h3 style="color: #FFF;"><a href="/posts/entry/{{_id}}">{{title}}</a></h3>
         </div>
-        <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
-            <p>{{subContent content}}</p>
-        </div>
-        <br/>
-        <div class="right">
-            <a class="right" href="/posts/entry/{{_id}}">Read more</a>
-        </div>
-        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+        <div style="padding: 7px 0px 0px 7px;">
 
             <div>
                 <div class="minilogo">
@@ -20,10 +13,17 @@
                 <b>By {{getOwnerUsername author}}</b>
             </div>
             <div class="left">
-                <b>{{formattime createdAt}}</b>
-                 <b>Updated : {{formattime lastUpdate}}</b>
+                <b>{{formattime createdAt}} ago- </b>
+                <b>Updated : {{formattime lastUpdate}} ago</b>
             </div>
         </div>
+        <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
+            <p>{{subContent content}}</p>
+        </div>
+        <div style="padding: 0px 20px 10px 0px;" class="right">
+            <a class="right" href="/posts/entry/{{_id}}">Read more</a>
+        </div>
+
     </div>
     <br/>
 </template>

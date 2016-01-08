@@ -3,17 +3,27 @@
         <img src="{{getOwnerPicture author}}" alt="" class="circle">
 
         <br/>
-<span class="title">Created By : {{getOwnerUsername author}}</span>
+        <span class="title">Created By : {{getOwnerUsername author}}</span>
+
         <p>
-        <a href="/posts/entry/{{_id}}"><b>{{title}}</b></a>
+            <a href="/posts/entry/{{_id}}"><b>{{title}}</b></a>
             <br/>
-        {{#if isOwner author}}
-            <a href="/posts/edit/{{_id}}"><i class="material-icons">mode_edit</i></a><br/>
-        {{/if}}
+            {{#if isOwner author}}
+                <a href="/posts/edit/{{_id}}"><i class="material-icons">mode_edit</i></a><br/>
+            {{else}}
+                {{#if isAdmin author}}
+                    <a href="/posts/edit/{{_id}}"><i class="material-icons">mode_edit</i></a><br/>
+                {{/if}}
+            {{/if}}
         </p>
         {{#if isOwner author}}
             <a class="secondary-content remove-post" style="cursor: pointer"><i id="{{_id}}" class="material-icons">close</i></a>
+        {{else}}
+            {{#if isAdmin author}}
+                <a class="secondary-content remove-post" style="cursor: pointer"><i id="{{_id}}" class="material-icons">close</i></a>
+            {{/if}}
         {{/if}}
+
         <br/>
     </li>
 </template>

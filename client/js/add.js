@@ -29,14 +29,19 @@ Template.add.events({
         var content = $("#content").val();
         if (title.trim() != '' && content.trim() != '') {
             file = $('.imageInput').get(0).files[0];
-            var fsFile = new FS.File(file);
-            image = Images.insert(fsFile, function (err, fileObj) {
-                if (err) {
-                    console.error(err);
-                } else {
+            var image = typeof file !== 'undefined';
+            //console.log(image);
+            if(image){
+                var fsFile = new FS.File(file);
+                image = Images.insert(fsFile, function (err, fileObj) {
+                    if (err) {
+                        //console.error(err);
+                    } else {
 
-                }
-            });
+                    }
+                });
+            }
+
             Meteor.call('editPost',evt.target.id, title, content, image);
             Materialize.toast('Post Successfully Modified', 4000, 'rounded');
         } else {
