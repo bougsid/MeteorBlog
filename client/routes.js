@@ -65,7 +65,6 @@ Router.route('/posts/entry/:_id', {
     waitOn: function () {
         return Meteor.subscribe('posts', this.params._id);
     },
-
     action: function () {
         CommentsPages.set({
             perPage: 4,
