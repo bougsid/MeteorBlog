@@ -58,24 +58,43 @@ Router.route('/posts/edit/:_id', function () {
     }
 
 })
-Router.route('/posts/entry/:_id', function () {
-    CommentsPages.set({
-        perPage: 4,
-        sort: {
-            createdAt: -1
-        },
-        filters: {
-            "idPost": {
-                $eq: this.params._id
+Router.route('/posts/entry/:_id', {
+    // this template will be rendered until the subscriptions are ready
+    //loadingTemplate: 'loading',
+
+    waitOn: function () {
+        // return one handle, a function, or an array
+        return Meteor.subscribe('posts', this.params._id);
+    },
+
+    action: function () {
+        CommentsPages.set({
+            perPage: 4,
+            sort: {
+                createdAt: -1
+            },
+            filters: {
+                "idPost": {
+                    $eq: this.params._id
+                }
             }
-        }
-    });
-    this.render('entry', {
-        data: function () {
-            return Posts.findOne({_id: this.params._id});
-        }
-    })
-})
+        });
+        this.render('entry', {
+            data: function () {
+                return Posts.findOne({_id: this.params._id});
+            }
+        })
+    }
+});
+//Router.route('/posts/entry/:_id', function () {
+
+//
+//    this.render('entry', {
+//        data: function () {
+//            return Posts.findOne({_id: this.params._id});
+//        }
+//    })
+//})
 Router.route('/editProfile', function () {
     if (Meteor.user()) {
         this.render('editProfile', {

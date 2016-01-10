@@ -11,17 +11,20 @@ Accounts.onCreateUser(function (o, user) {
 
 Posts = new Mongo.Collection('posts');
 
-//Meteor.publish('posts', function (options) {
-//    return Posts.find({}, options);
-//});
 Posts.allow({
     'insert' : function () {
-        return true;
-    }
+        if(Meteor.user())
+            return true;
+    },
+    'update' : function () {
+        if(Meteor.user())
+            return true;
+    },
+    'remove' : function () {
+        if(Meteor.user())
+            return true;
+    },
 })
-Meteor.publish('users', function () {
-    return Meteor.users.find({});
-});
 
 Pages = new Meteor.Pagination(Posts, {
     sort: {createdAt: -1},
@@ -33,15 +36,25 @@ Pages = new Meteor.Pagination(Posts, {
     }
 });
 Images = new FS.Collection("images", {
-    stores: [new FS.Store.FileSystem("images", {path: "~/images"})],
+    stores: [new FS.Store.FileSystem("images", {path: Meteor.absolutePath + '/public/images'})],
     filter: {
         allow: {
             contentTypes: ['image/*'] //allow only images in this FS.Collection
         }}
 });
+Meteor.publish("posts", function(id) {
+    return Posts.find({_id: id})
+});
+
 Meteor.publish("images", function() {
     return Images.find();
 });
+
+Meteor.publish('users', function () {
+    return Meteor.users.find({});
+});
+
+
 
 Images.allow({
     insert: function(userId, doc) {
@@ -67,44 +80,44 @@ Images.allow({
         return true;
     }
 });
-Meteor.methods({
-    addPost: function (title, content, image) {
-        if (Meteor.user() != null)
-            Posts.insert({
-                author: Meteor.userId(),
-                title: title,
-                content: content,
-                image: image,
-                createdAt: Date.now(),
-                lastUpdate: Date.now(),
-            })
-    },
-    editPost: function (id, title, content, image) {
-        if (Meteor.user() != null){
-            if(image){
-                Posts.update({_id: id}, {
-                    $set: {
-                        'title': title,
-                        'content': content,
-                        'lastUpdate': Date.now(),
-                        'image' : image
-                    }
-                })
-            }else{
-                Posts.update({_id: id}, {
-                    $set: {
-                        'title': title,
-                        'content': content,
-                        'lastUpdate': Date.now(),
-                    }
-                })
-            }
-        }
-
-    },
-    removePost: function (id) {
-        Posts.remove({
-            _id: id
-        })
-    }
-})
+//Meteor.methods({
+//    addPost: function (title, content, image) {
+//        if (Meteor.user() != null)
+//            Posts.insert({
+//                author: Meteor.userId(),
+//                title: title,
+//                content: content,
+//                image: image,
+//                createdAt: Date.now(),
+//                lastUpdate: Date.now(),
+//            })
+//    },
+//    editPost: function (id, title, content, image) {
+//        if (Meteor.user() != null){
+//            if(image){
+//                Posts.update({_id: id}, {
+//                    $set: {
+//                        'title': title,
+//                        'content': content,
+//                        'lastUpdate': Date.now(),
+//                        'image' : image
+//                    }
+//                })
+//            }else{
+//                Posts.update({_id: id}, {
+//                    $set: {
+//                        'title': title,
+//                        'content': content,
+//                        'lastUpdate': Date.now(),
+//                    }
+//                })
+//            }
+//        }
+//
+//    },
+//    removePost: function (id) {
+//        Posts.remove({
+//            _id: id
+//        })
+//    }
+//})

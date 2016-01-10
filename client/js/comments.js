@@ -12,7 +12,13 @@ Template.entry.events({
         var comment = $("#comment-content").val();
         if(Meteor.user())
         if(comment.trim() != ''){
-            Meteor.call('addComment',evt.target.id, $("#comment-content").val());
+            //Meteor.call('addComment',evt.target.id, $("#comment-content").val());
+            Comments.insert({
+                idPost: evt.target.id,
+                author: Meteor.userId(),
+                content: comment,
+                createdAt: Date.now(),
+            });
             $("#comment-content").val('');
             Materialize.toast('Comment Successfully Added', 4000, 'rounded');
         }else{
@@ -23,7 +29,10 @@ Template.entry.events({
         }
     },
     'click .remove-comment-btn': function (evt) {
-        Meteor.call('removeComment', evt.target.id);
+        //Meteor.call('removeComment', evt.target.id);
+        Comments.remove({
+            _id: evt.target.id
+        })
         Materialize.toast('Comment Successfully Removed', 2000, 'rounded');
     }
 });

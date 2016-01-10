@@ -10,12 +10,19 @@ Template.add.events({
             var fsFile = new FS.File(file);
             image = Images.insert(fsFile, function (err, fileObj) {
                 if (err) {
-                    console.error(err);
+                    //console.error(err);
                 } else {
 
                 }
             });
-            Meteor.call('addPost', title, content, image);
+            Posts.insert({
+                author: Meteor.userId(),
+                title: title,
+                content: content,
+                image: image,
+                createdAt: Date.now(),
+                lastUpdate: Date.now(),
+            })
             Materialize.toast('Post Successfully Published', 4000, 'rounded');
             $("#title").val('');
             $("#content").val('');
@@ -28,6 +35,7 @@ Template.add.events({
         var title = $("#title").val();
         var content = $("#content").val();
         if (title.trim() != '' && content.trim() != '') {
+            var id = evt.target.id;
             file = $('.imageInput').get(0).files[0];
             var image = typeof file !== 'undefined';
             //console.log(image);
@@ -40,9 +48,25 @@ Template.add.events({
 
                     }
                 });
+                Posts.update({_id: id}, {
+                    $set: {
+                        'title': title,
+                        'content': content,
+                        'lastUpdate': Date.now(),
+                        'image' : image
+                    }
+                })
             }
-
-            Meteor.call('editPost',evt.target.id, title, content, image);
+            else{
+                Posts.update({_id: id}, {
+                    $set: {
+                        'title': title,
+                        'content': content,
+                        'lastUpdate': Date.now(),
+                    }
+                })
+            }
+            //Meteor.call('editPost',evt.target.id, title, content, image);
             Materialize.toast('Post Successfully Modified', 4000, 'rounded');
         } else {
             Materialize.toast('Please fill out all the fields', 4000, 'rounded');
@@ -58,7 +82,10 @@ Template.add.helpers({
 
 Template.liPost.events({
     'click .remove-post': function (evt) {
-        Meteor.call('removePost', evt.target.id);
+        //Meteor.call('removePost', evt.target.id);
+        Posts.remove({
+            _id: evt.target.id
+        })
         Materialize.toast('Post Successfully Removed', 2000, 'rounded');
     }
 });

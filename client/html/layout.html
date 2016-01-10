@@ -12,11 +12,11 @@
             <a href="/" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 {{#if isConnected}}
-                    <a href="/editProfile" class="white-text waves-effect  btn-flat">Edit Profile</a>
-                    <a id="add-post-btn" href="/posts/add" class="white-text waves-effect  btn-flat">Add Post</a>
+                    <a id="add-post-btn" href="/posts/add" class="white-text waves-effect btn-flat">Add Post</a>
                     {{#if isAdmin}}
-                        <a id="messages" href="/messages" class="white-text waves-effect  btn-flat">Messages</a>
+                        <a id="messages" href="/messages" class="white-text waves-effect pink btn-flat">Messages</a>
                     {{/if}}
+                    <a href="/editProfile" class="white-text waves-effect pink btn-flat">Edit Profile</a>
                 {{/if}}
                 <a id="login-btn" class="white-text waves-effect  btn-flat pink login-btn">{{#if isConnected}}Logout{{else}}
                     Login{{/if}}</a>

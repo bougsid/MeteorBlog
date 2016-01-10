@@ -1,7 +1,8 @@
 <template name="message">
     <li class="collection-item avatar">
         <img src="{{getOwnerPicture author}}" alt="" class="circle">
-        Email : <b><span class="title">{{email}}</span></b>
+        Email : <b><span class="title">{{email}}</span></b><br/>
+        <b><span class="title">{{formattime sentAt}} ago</span></b>
         <p>
 
         <br/>
