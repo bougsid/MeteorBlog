@@ -77,11 +77,17 @@ Router.route('/posts/entry/:_id', {
                 }
             }
         });
-        this.render('entry', {
-            data: function () {
-                return Posts.findOne({_id: this.params._id});
-            }
-        })
+        var post = Posts.findOne({_id: this.params._id});
+        if(typeof post !== 'undefined'){
+            this.render('entry', {
+                data: function () {
+                    return post;
+                }
+            });
+        }
+        else{
+            this.render('notFound');
+        }
     }
 });
 //Router.route('/posts/entry/:_id', function () {
