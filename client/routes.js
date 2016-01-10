@@ -3,7 +3,8 @@
  */
 Router.configure({
     layoutTemplate: 'layout',
-    notFoundTemplate: 'notFound'
+    notFoundTemplate: 'notFound',
+    loadingTemplate: 'loading'
 });
 
 Router.route('/', function () {
@@ -60,10 +61,8 @@ Router.route('/posts/edit/:_id', function () {
 })
 Router.route('/posts/entry/:_id', {
     // this template will be rendered until the subscriptions are ready
-    //loadingTemplate: 'loading',
 
     waitOn: function () {
-        // return one handle, a function, or an array
         return Meteor.subscribe('posts', this.params._id);
     },
 
